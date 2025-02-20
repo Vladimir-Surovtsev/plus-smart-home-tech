@@ -1,12 +1,8 @@
 package event.model.sensor;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString(callSuper = true)
+@Data
 public class TemperatureSensorEvent extends SensorEvent {
     private int temperatureC;
     private int temperatureF;

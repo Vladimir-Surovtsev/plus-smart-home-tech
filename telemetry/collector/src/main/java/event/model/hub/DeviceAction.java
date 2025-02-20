@@ -1,12 +1,8 @@
 package event.model.hub;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class DeviceAction {
     private String sensorId;
     private ActionType type;

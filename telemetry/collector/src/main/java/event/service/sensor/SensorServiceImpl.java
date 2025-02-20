@@ -26,15 +26,17 @@ public class SensorServiceImpl implements SensorService {
 
     @Override
     public void sendEventToKafka(SensorEvent sensorEvent) {
-        Object payload;
-        switch (sensorEvent.getType()) {
+        if (sensorEvent.getType() == null) {
+            throw new IllegalStateException("Unexpected value: " + sensorEvent.getType());
+        }
+        Object payload = switch (sensorEvent.getType()) {
             case LIGHT_SENSOR_EVENT -> {
                 LightSensorEvent lightSensorEvent = (LightSensorEvent) sensorEvent;
-                payload = new LightSensorAvro(lightSensorEvent.getLinkQuality(), lightSensorEvent.getLuminosity());
+                yield new LightSensorAvro(lightSensorEvent.getLinkQuality(), lightSensorEvent.getLuminosity());
             }
             case MOTION_SENSOR_EVENT -> {
                 MotionSensorEvent motionSensorEvent = (MotionSensorEvent) sensorEvent;
-                payload = new MotionSensorAvro(
+                yield new MotionSensorAvro(
                         motionSensorEvent.getLinkQuality(),
                         motionSensorEvent.isMotion(),
                         motionSensorEvent.getVoltage()
@@ -42,7 +44,7 @@ public class SensorServiceImpl implements SensorService {
             }
             case CLIMATE_SENSOR_EVENT -> {
                 ClimateSensorEvent climateSensorEvent = (ClimateSensorEvent) sensorEvent;
-                payload = new ClimateSensorAvro(
+                yield new ClimateSensorAvro(
                         climateSensorEvent.getTemperatureC(),
                         climateSensorEvent.getHumidity(),
                         climateSensorEvent.getCo2Level()
@@ -50,28 +52,30 @@ public class SensorServiceImpl implements SensorService {
             }
             case SWITCH_SENSOR_EVENT -> {
                 SwitchSensorEvent switchSensorEvent = (SwitchSensorEvent) sensorEvent;
-                payload = new SwitchSensorAvro(switchSensorEvent.isState());
+                yield new SwitchSensorAvro(switchSensorEvent.isState());
             }
             case TEMPERATURE_SENSOR_EVENT -> {
                 TemperatureSensorEvent temperatureSensorEvent = (TemperatureSensorEvent) sensorEvent;
-                payload = new TemperatureSensorAvro(
+                yield new TemperatureSensorAvro(
                         temperatureSensorEvent.getTemperatureC(),
                         temperatureSensorEvent.getTemperatureF()
                 );
             }
-            case null, default -> throw new IllegalStateException("Unexpected value: " + sensorEvent.getType());
-        }
+        };
+
         SensorEventAvro sensorEventAvro = new SensorEventAvro(
                 sensorEvent.getId(),
                 sensorEvent.getHubId(),
                 sensorEvent.getTimestamp(),
                 payload
         );
+
         ProducerRecord<String, SpecificRecordBase> producerRecord = new ProducerRecord<>(
                 KafkaTopics.SENSORS,
                 sensorEvent.getHubId(),
                 sensorEventAvro
         );
+
         kafkaClient.getProducer().send(producerRecord);
     }
 }
