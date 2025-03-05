@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -8,20 +8,16 @@
         <artifactId>serialization</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>proto-schemas</artifactId>
-
     <dependencies>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
         </dependency>
-
         <!-- Until gRPC generator library moves to generated jakarta instead of javax -->
         <!-- https://github.com/grpc/grpc-java/issues/9179 -->
         <dependency>
@@ -33,8 +29,7 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>4.28.0-RC1</version>
-            <scope>compile</scope>
+            <version>${protobuf.version}</version>
         </dependency>
     </dependencies>
 
@@ -44,14 +39,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>io.github.ascopes</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-
                 <configuration>
                     <protocVersion>${protobuf.version}</protocVersion>
-
                     <binaryMavenPlugins>
                         <binaryMavenPlugin>
                             <groupId>io.grpc</groupId>
@@ -60,7 +52,6 @@
                         </binaryMavenPlugin>
                     </binaryMavenPlugins>
                 </configuration>
-
                 <executions>
                     <execution>
                         <goals>
@@ -69,7 +60,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>

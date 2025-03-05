@@ -5,7 +5,6 @@ protocol SensorEventProtocol {
         int humidity;
         int co2_level;
     }
-
     record LightSensorAvro {
         int link_quality;
         int luminosity;
