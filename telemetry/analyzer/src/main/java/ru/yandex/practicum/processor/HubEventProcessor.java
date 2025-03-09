@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.processor;
+package ru.yandex.practicum.processor;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -10,9 +10,9 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import ru.yandex.practicum.analyzer.kafka.AnalyzerKafkaConfig;
-import ru.yandex.practicum.analyzer.service.ScenarioService;
-import ru.yandex.practicum.analyzer.service.SensorService;
+import ru.yandex.practicum.kafka.AnalyzerKafkaConfig;
+import ru.yandex.practicum.service.ScenarioService;
+import ru.yandex.practicum.service.SensorService;
 import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
 import ru.yandex.practicum.kafka.telemetry.event.DeviceRemovedEventAvro;
 import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;

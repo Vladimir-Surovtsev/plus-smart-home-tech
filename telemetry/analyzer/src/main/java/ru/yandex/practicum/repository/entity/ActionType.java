@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.repository.entity;
+package ru.yandex.practicum.repository.entity;
 
 public enum ActionType {
     ACTIVATE,

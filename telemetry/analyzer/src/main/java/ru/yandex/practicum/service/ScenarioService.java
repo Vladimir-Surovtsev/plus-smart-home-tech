@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.service;
+package ru.yandex.practicum.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,13 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
-import ru.yandex.practicum.analyzer.repository.ScenarioRepository;
-import ru.yandex.practicum.analyzer.repository.entity.Action;
-import ru.yandex.practicum.analyzer.repository.entity.ActionType;
-import ru.yandex.practicum.analyzer.repository.entity.Condition;
-import ru.yandex.practicum.analyzer.repository.entity.ConditionOperation;
-import ru.yandex.practicum.analyzer.repository.entity.ConditionType;
-import ru.yandex.practicum.analyzer.repository.entity.Scenario;
+import ru.yandex.practicum.repository.ScenarioRepository;
+import ru.yandex.practicum.repository.entity.Action;
+import ru.yandex.practicum.repository.entity.ActionType;
+import ru.yandex.practicum.repository.entity.Condition;
+import ru.yandex.practicum.repository.entity.ConditionOperation;
+import ru.yandex.practicum.repository.entity.ConditionType;
+import ru.yandex.practicum.repository.entity.Scenario;
 
 @Service
 @RequiredArgsConstructor

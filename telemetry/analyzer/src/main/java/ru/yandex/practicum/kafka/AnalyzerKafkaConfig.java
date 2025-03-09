@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.kafka;
+package ru.yandex.practicum.kafka;
 
 import java.util.Map;
 import java.util.Properties;

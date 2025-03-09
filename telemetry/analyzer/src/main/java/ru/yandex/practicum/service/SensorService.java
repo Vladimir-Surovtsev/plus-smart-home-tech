@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.service;
+package ru.yandex.practicum.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import ru.yandex.practicum.analyzer.repository.SensorRepository;
-import ru.yandex.practicum.analyzer.repository.entity.Sensor;
+import ru.yandex.practicum.repository.SensorRepository;
+import ru.yandex.practicum.repository.entity.Sensor;
 
 @Service
 @RequiredArgsConstructor

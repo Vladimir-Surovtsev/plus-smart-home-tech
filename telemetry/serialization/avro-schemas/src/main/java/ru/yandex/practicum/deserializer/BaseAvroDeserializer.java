@@ -1,4 +1,4 @@
-package ru.yandex.kafka;
+package ru.yandex.practicum.deserializer;
 
 import java.io.ByteArrayInputStream;
 

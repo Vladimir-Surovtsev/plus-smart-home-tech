@@ -1,4 +1,4 @@
-package ru.yandex.practicum.analyzer.processor;
+package ru.yandex.practicum.processor;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import ru.yandex.practicum.analyzer.service.SnapshotService;
+import ru.yandex.practicum.service.SnapshotService;
 import ru.yandex.practicum.kafka.telemetry.event.SensorsSnapshotAvro;
 
 @Slf4j
